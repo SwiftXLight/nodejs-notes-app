@@ -45,6 +45,15 @@ class NoteController {
             res.status(500).json(e.message);
         }
     }
+
+    async stats(req, res) {
+        try {
+            const stats = await noteService.stats();
+            return res.json(stats);
+        } catch(e) {
+            res.status(500).json(e.message);
+        }
+    }
 }
 
 export default new NoteController();

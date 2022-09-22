@@ -1,8 +1,13 @@
 import mongoose from "mongoose";
+const reg = /(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/g;
 
 const NoteSchema = new mongoose.Schema({
     title: {type: String, required: true},
-    category: {type: String, required: true},
+    category: {
+        type: String,
+        enum: ["Task", "Idea", "Random Thought"],
+        required: true
+    },
     description: {type: String, required: true},
     createdAt: {
         type: String,
@@ -11,6 +16,15 @@ const NoteSchema = new mongoose.Schema({
     isArchived: {
         type: Boolean,
         default: false
+    },
+    datesMatch: {
+        type: Array,
+        default: function() {
+            if (this.description.match(reg)) {
+                return this.description.match(reg).join(", ");
+            }
+            return [];
+        }
     }
 });
 
