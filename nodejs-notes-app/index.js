@@ -1,6 +1,5 @@
 import express from "express";
 import mongoose from "mongoose";
-import NoteSchema from "./helpers/NoteSchema.js";
 import router from "./routes/router.js";
 
 const PORT = 5000;
