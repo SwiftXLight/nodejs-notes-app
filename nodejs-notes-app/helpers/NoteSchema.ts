@@ -12,6 +12,8 @@ const NoteSchema = new mongoose.Schema({
     createdAt: {
         type: String,
         default: new Date().toJSON().slice(0,10),
+        immutable: true,
+        readonly: true
     },
     isArchived: {
         type: Boolean,
@@ -24,7 +26,8 @@ const NoteSchema = new mongoose.Schema({
                 return this.description.match(reg).join(", ");
             }
             return [];
-        }
+        },
+        readonly: true
     }
 });
 

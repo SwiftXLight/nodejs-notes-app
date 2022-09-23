@@ -1,7 +1,8 @@
 import noteService from "../services/noteService.js";
+import { Request, Response } from 'express';
 
 class NoteController {
-    async create(req, res) {
+    async create(req: Request, res: Response) {
         try {
             const note = await noteService.create(req.body);
             res.json(note);
@@ -10,7 +11,7 @@ class NoteController {
         }
     }
 
-    async getAll(req, res) {
+    async getAll(req: Request, res: Response) {
         try {
             const notes = await noteService.getAll();
             return res.json(notes);
@@ -19,7 +20,7 @@ class NoteController {
         }
     }
 
-    async getOne(req, res) {
+    async getOne(req: Request, res: Response) {
         try {
             const note = await noteService.getOne(req.params.id);
             return res.json(note);
@@ -28,7 +29,7 @@ class NoteController {
         }
     }
 
-    async update(req, res) {
+    async update(req: Request, res: Response) {
         try {
             const updateNote = await noteService.update(req.body);
             return res.json(updateNote);
@@ -37,7 +38,7 @@ class NoteController {
         }
     }
 
-    async delete(req, res) {
+    async delete(req: Request, res: Response) {
         try {
             const note = await noteService.delete(req.params.id);
             return res.json(note);
@@ -46,7 +47,7 @@ class NoteController {
         }
     }
 
-    async stats(req, res) {
+    async stats(req: Request, res: Response) {
         try {
             const stats = await noteService.stats();
             return res.json(stats);

@@ -92,7 +92,7 @@ var noteService = /** @class */ (function () {
                         if (!note._id) {
                             throw new Error("Id not found");
                         }
-                        return [4 /*yield*/, NoteSchema_js_1["default"].findByIdAndUpdate(note._id, note, { "new": true })];
+                        return [4 /*yield*/, NoteSchema_js_1["default"].findByIdAndUpdate(note._id, note, { "new": true, runValidators: true, overwrite: true })];
                     case 1:
                         updateNote = _a.sent();
                         return [2 /*return*/, updateNote];

@@ -12,7 +12,9 @@ var NoteSchema = new mongoose_1["default"].Schema({
     description: { type: String, required: true },
     createdAt: {
         type: String,
-        "default": new Date().toJSON().slice(0, 10)
+        "default": new Date().toJSON().slice(0, 10),
+        immutable: true,
+        readonly: true
     },
     isArchived: {
         type: Boolean,
@@ -25,7 +27,8 @@ var NoteSchema = new mongoose_1["default"].Schema({
                 return this.description.match(reg).join(", ");
             }
             return [];
-        }
+        },
+        readonly: true
     }
 });
 exports["default"] = mongoose_1["default"].model("NoteSchema", NoteSchema);

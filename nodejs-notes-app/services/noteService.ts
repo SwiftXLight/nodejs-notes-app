@@ -1,7 +1,8 @@
 import NoteSchema from "../helpers/NoteSchema.js";
+import INote from "../helpers/INote.js";
 
 class noteService {
-    async create(note) {
+    async create(note: INote) {
         const createdNote = await NoteSchema.create(note);
         return createdNote;
     }
@@ -11,7 +12,7 @@ class noteService {
         return notes;
     }
 
-    async getOne(id) {
+    async getOne(id: String) {
         if (!id) {
             throw new Error("Id not found");
         }
@@ -19,15 +20,15 @@ class noteService {
         return note;
     }
 
-    async update(note) {
+    async update(note: INote) {
         if (!note._id) {
             throw new Error("Id not found");
         }
-        const updateNote = await NoteSchema.findByIdAndUpdate(note._id, note, {new: true});
+        const updateNote = await NoteSchema.findByIdAndUpdate(note._id, note, {new: true, runValidators: true, overwrite: true});
         return updateNote;
     }
 
-    async delete(id) {
+    async delete(id: String) {
         if (!id) {
             throw new Error("Id not found");
         }
