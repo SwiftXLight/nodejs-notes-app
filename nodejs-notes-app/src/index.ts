@@ -1,6 +1,6 @@
 import * as express from 'express';
 import mongoose, { ConnectOptions } from "mongoose";
-import router from "./routes/router.js";
+import router from "./routes/router";
 
 const PORT = 5000;
 const DB_URL = "mongodb+srv://SwiftXLight:user1@cluster0.ccifhb8.mongodb.net/?retryWrites=true&w=majority";

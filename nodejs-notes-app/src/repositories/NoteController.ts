@@ -1,4 +1,4 @@
-import noteService from "../services/noteService.js";
+import noteService from "../services/noteService";
 import { Request, Response } from 'express';
 
 class NoteController {

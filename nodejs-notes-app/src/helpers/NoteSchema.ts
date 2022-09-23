@@ -22,7 +22,9 @@ const NoteSchema = new mongoose.Schema({
     datesMatch: {
         type: Array,
         default: function() {
+            // @ts-ignore: Unreachable code error
             if (this.description.match(reg)) {
+                // @ts-ignore: Unreachable code error
                 return this.description.match(reg).join(", ");
             }
             return [];

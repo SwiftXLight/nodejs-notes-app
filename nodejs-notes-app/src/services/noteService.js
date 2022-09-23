@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var NoteSchema_js_1 = require("../helpers/NoteSchema.js");
+var NoteSchema_1 = require("../helpers/NoteSchema");
 var noteService = /** @class */ (function () {
     function noteService() {
     }
@@ -45,7 +45,7 @@ var noteService = /** @class */ (function () {
             var createdNote;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, NoteSchema_js_1["default"].create(note)];
+                    case 0: return [4 /*yield*/, NoteSchema_1["default"].create(note)];
                     case 1:
                         createdNote = _a.sent();
                         return [2 /*return*/, createdNote];
@@ -58,7 +58,7 @@ var noteService = /** @class */ (function () {
             var notes;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, NoteSchema_js_1["default"].find()];
+                    case 0: return [4 /*yield*/, NoteSchema_1["default"].find()];
                     case 1:
                         notes = _a.sent();
                         return [2 /*return*/, notes];
@@ -75,7 +75,7 @@ var noteService = /** @class */ (function () {
                         if (!id) {
                             throw new Error("Id not found");
                         }
-                        return [4 /*yield*/, NoteSchema_js_1["default"].findById(id)];
+                        return [4 /*yield*/, NoteSchema_1["default"].findById(id)];
                     case 1:
                         note = _a.sent();
                         return [2 /*return*/, note];
@@ -92,7 +92,7 @@ var noteService = /** @class */ (function () {
                         if (!note._id) {
                             throw new Error("Id not found");
                         }
-                        return [4 /*yield*/, NoteSchema_js_1["default"].findByIdAndUpdate(note._id, note, { "new": true, runValidators: true, overwrite: true })];
+                        return [4 /*yield*/, NoteSchema_1["default"].findByIdAndUpdate(note._id, note, { "new": true, runValidators: true, overwrite: true })];
                     case 1:
                         updateNote = _a.sent();
                         return [2 /*return*/, updateNote];
@@ -109,7 +109,7 @@ var noteService = /** @class */ (function () {
                         if (!id) {
                             throw new Error("Id not found");
                         }
-                        return [4 /*yield*/, NoteSchema_js_1["default"].findByIdAndDelete(id)];
+                        return [4 /*yield*/, NoteSchema_1["default"].findByIdAndDelete(id)];
                     case 1:
                         note = _a.sent();
                         return [2 /*return*/, note];
@@ -122,7 +122,7 @@ var noteService = /** @class */ (function () {
             var notes, activeIdea, activeTask, activeRandomThought, archiveIdea, archiveTask, archiveRandomThoughtArc, i, stats;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, NoteSchema_js_1["default"].find()];
+                    case 0: return [4 /*yield*/, NoteSchema_1["default"].find()];
                     case 1:
                         notes = _a.sent();
                         activeIdea = 0;

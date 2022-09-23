@@ -1,5 +1,5 @@
-import NoteSchema from "../helpers/NoteSchema.js";
-import INote from "../helpers/INote.js";
+import NoteSchema from "../helpers/NoteSchema";
+import INote from "../helpers/INote";
 
 class noteService {
     async create(note: INote) {

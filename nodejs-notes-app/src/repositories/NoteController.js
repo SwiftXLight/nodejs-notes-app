@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var noteService_js_1 = require("../services/noteService.js");
+var noteService_1 = require("../services/noteService");
 var NoteController = /** @class */ (function () {
     function NoteController() {
     }
@@ -47,7 +47,7 @@ var NoteController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, noteService_js_1["default"].create(req.body)];
+                        return [4 /*yield*/, noteService_1["default"].create(req.body)];
                     case 1:
                         note = _a.sent();
                         res.json(note);
@@ -68,7 +68,7 @@ var NoteController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, noteService_js_1["default"].getAll()];
+                        return [4 /*yield*/, noteService_1["default"].getAll()];
                     case 1:
                         notes = _a.sent();
                         return [2 /*return*/, res.json(notes)];
@@ -88,7 +88,7 @@ var NoteController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, noteService_js_1["default"].getOne(req.params.id)];
+                        return [4 /*yield*/, noteService_1["default"].getOne(req.params.id)];
                     case 1:
                         note = _a.sent();
                         return [2 /*return*/, res.json(note)];
@@ -108,7 +108,7 @@ var NoteController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, noteService_js_1["default"].update(req.body)];
+                        return [4 /*yield*/, noteService_1["default"].update(req.body)];
                     case 1:
                         updateNote = _a.sent();
                         return [2 /*return*/, res.json(updateNote)];
@@ -128,7 +128,7 @@ var NoteController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, noteService_js_1["default"]["delete"](req.params.id)];
+                        return [4 /*yield*/, noteService_1["default"]["delete"](req.params.id)];
                     case 1:
                         note = _a.sent();
                         return [2 /*return*/, res.json(note)];
@@ -148,7 +148,7 @@ var NoteController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, noteService_js_1["default"].stats()];
+                        return [4 /*yield*/, noteService_1["default"].stats()];
                     case 1:
                         stats = _a.sent();
                         return [2 /*return*/, res.json(stats)];

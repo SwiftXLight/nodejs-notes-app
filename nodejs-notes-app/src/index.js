@@ -38,12 +38,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var express = require("express");
 var mongoose_1 = require("mongoose");
-var router_js_1 = require("./routes/router.js");
+var router_1 = require("./routes/router");
 var PORT = 5000;
 var DB_URL = "mongodb+srv://SwiftXLight:user1@cluster0.ccifhb8.mongodb.net/?retryWrites=true&w=majority";
 var app = express();
 app.use(express.json());
-app.use("", router_js_1["default"]);
+app.use("", router_1["default"]);
 function startApp() {
     return __awaiter(this, void 0, void 0, function () {
         var e_1;
