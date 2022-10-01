@@ -27,7 +27,7 @@ export class Note extends Model<Note, NoteCreationAtributes> {
 
     @ApiProperty({example: "2000-20-20", description: "Match dates from description"})
     @Column({type: DataType.STRING, allowNull: true})
-    matchDates: string[];
+    matchDates: string;
 
     @ApiProperty({example: "false", description: "Is note archived or not"})
     @Column({type: DataType.BOOLEAN, defaultValue: false})
