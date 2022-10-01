@@ -1,7 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-export class CreateNoteDto {
-
+export class UpdateNoteDto {
     @ApiProperty({example: "Title", description: "Some title"})
     readonly title: string;
 
