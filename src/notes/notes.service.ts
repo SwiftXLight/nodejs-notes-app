@@ -4,6 +4,8 @@ import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 import { Note } from './notes.model';
 
+const reg = /(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/g;
+
 @Injectable()
 export class NotesService {
 
@@ -12,6 +14,13 @@ export class NotesService {
     async createNote(dto: CreateNoteDto) {
         try {
             const note = await this.noteRepository.create(dto);
+
+            if (note.description) {
+                note.matchDates = note.description.match(reg).join(", ");
+            } else {
+                note.matchDates = "";
+            }
+
             return note;
         } catch(e) {
             return e.message;
@@ -21,6 +30,15 @@ export class NotesService {
     async getAllNotes() {
         try {
             const notes = await this.noteRepository.findAll();
+
+            notes.forEach(note => {
+                if (note.description) {
+                    note.matchDates = note.description.match(reg).join(", ");
+                } else {
+                    note.matchDates = "";
+                }
+            })
+
             return notes;
         } catch(e) {
             return e.message;
@@ -28,45 +46,57 @@ export class NotesService {
     }
 
     async getNote(id: number) {
-        if (!id) {
-            throw new Error("Id not found");
-        }
         try {
             const note = await this.noteRepository.findOne({where: {id}});
-            return note;
+            if (note) {
+
+                if (note.description) {
+                    note.matchDates = note.description.match(reg).join(", ");
+                } else {
+                    note.matchDates = "";
+                }
+
+                return note;
+            } else {
+                return `Can't find note with id ${id}`;
+            }
         } catch(e) {
             return e.message;
         }
     }
 
     async deleteNote(id: number) {
-        if (!id) {
-            throw new Error("Id not found");
-        }
         try {
             const note = await this.noteRepository.destroy({where: {id}})
-            return note;
+            if (note === 1) {
+                return `note with id ${id} was successfully deleted`
+            } else if (note === 0) {
+                return "Id not found";
+            }
         } catch(e) {
             return e.message;
         }
     }
 
     async updateNote(id: number, noteDto: UpdateNoteDto) {
-        if (!id) {
-            throw new Error("Id not found");
-        }
         try {
             const note = await this.noteRepository.update({ ...noteDto }, { where: {id}, returning: true })
-            return note;
+            const curNote = note[1][0];
+
+            if (curNote.description) {
+                curNote.matchDates = curNote.description.match(reg).join(", ");
+            } else {
+                curNote.matchDates = "";
+            }
+
+            return curNote;
         } catch(e) {
             return e.message;
         }
     }
-
     
     async getNotesStats() {
-        try 
-        {
+        try {
             const notes = await this.noteRepository.findAll();
 
             let activeIdea = 0;
@@ -103,6 +133,8 @@ export class NotesService {
 
             return stats;
 
-        } catch(e) {return e.message;}
+        } catch(e) {
+            return e.message;
+        }
     }
 }
